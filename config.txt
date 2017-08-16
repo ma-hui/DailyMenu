@@ -1,0 +1,7 @@
+[urls]
+menu: http://crystalpot.cn/menus/0
+
+
+[locations]
+benbu: 网易餐厅
+xike: 西可餐厅
