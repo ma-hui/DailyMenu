@@ -138,6 +138,6 @@ def send_message(usrs, message):
 
 if __name__ == '__main__':
    menu = daily_menu()
-   users = get_config_value('Names','usrs')
+   users = get_config_value('Names','ne')
    send_message(users,menu)
 
