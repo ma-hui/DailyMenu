@@ -85,7 +85,6 @@ def get_xike_menu(tex):
     tt = tex[postart:]
     get_single_menu(tt)
 
-
 def get_single_menu(tex):
     ret = {}
     i = 0
@@ -104,7 +103,7 @@ def daily_check_time():
     # 1 lunch  2 dinner
     ltime = time.localtime(time.time())
     hrs = int(ltime.tm_hour)
-    if   hrs < 12:
+    if   hrs < 11:
         return TIMES[0]
     elif hrs < 18:
         return TIMES[1]
@@ -121,7 +120,7 @@ def daily_menu():
         cmenu = netmenu[ti]
         return cmenu
     else:
-        print("not the time to eat")
+        return "not the time to eat"
 
 def send_message(usrs, message):
     pattern = re.compile(';')
@@ -136,8 +135,11 @@ def send_message(usrs, message):
         }
         requests.post(popoapi, data = data)
 
-if __name__ == '__main__':
-   menu = daily_menu()
-   users = get_config_value('Names','ne')
-   send_message(users,menu)
+def daily_cron():
+    users = get_config_value('Names', 'ne')
+    menu = daily_menu()
+    # menu = 'ttt'
+    send_message(users, menu)
 
+if __name__ == '__main__':
+   daily_cron()
